@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="./src/css/style.css">
+    <title>Lista de Compras</title>
+
+</head>
+<body>
+    
+<body class="mt-2">
+    <main class="p-3 bg-info text-white rounded" id="">
+      <header class="text-center h1">Lista de compras</header>
+        <section>
+            <div class="input-group flex-nowrap">
+            
+                <input type="text" class="form-control" placeholder="Digite seu item" aria-label="Username">
+                
+                <button type="button" class="btn btn-dark">Adicionar</button>
+                </div>
+                
+            <div>
+        </section>
+      
+        <section>
+            <table id="buyingList">
+                <tr id="list_row_1 ">
+                    <td>
+                        5kg
+                    </td>
+                    <td class="itemToAdd ps-2">
+                        banana
+                    </td>
+                    <td>
+                        <div class="edit_button d-flex gap-1">
+                            <button class="btn btn-dark btn-sm float-right" type="submit">remover</button><button class="btn btn-dark btn-sm float-right " type="submit">Editar</button>
+                        </div>
+                    </td>
+                </tr>   
+            </table>
+        
+        </section>
+  
+        <nav>
+        
+            <button type="button" class="btn btn-dark">
+                <span>Acessar estoque</span>
+            </button>
+            
+            <button type="button" class="btn btn-dark">Finalizar Compras</button>
+        </nav>
+        <footer>
+        &copy; 2022 - Created by Jesus Guinarte e Leonardo Cruz
+        </footer>
+    </main>
+
+ <script src="./src/JS/script.js"></script>
+</body>
+</html>

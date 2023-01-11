@@ -12,22 +12,22 @@
 <body>
     
 <body class="mt-2">
-    <main class="p-3 bg-info text-white rounded" id="">
-      <header class="text-center h1">Lista de compras</header>
+    <main class="p-3 bg-dark text-white rounded" id="">
+      <header class="text-center h1 bg-info rounded">Lista de compras</header>
         <section>
             <div class="input-group mb-1">
                 <span class="input-group-text">Item:</span>
                 <input type="text" class="form-control" placeholder="Item" aria-label="Item">
-                <span class="input-group-text">Quantidade:</span>
+                <span class="input-group-text">Qnt:</span>
                 <input type="text" class="form-control" placeholder="Quantidade" aria-label="Quantidade">
               </div>
             <div class="btn-group">
-                <button type="button" class="btn btn-dark mb-2">Adicionar</button> 
+                <button type="button" class="btn btn-light mb-2">Adicionar</button> 
             </div>
         </section>
       
         <section>                
-            <table class="table table-sm table-striped table-dark" id="shopList">
+            <table class="table table-sm table-striped table-dark text-wrap" id="shopList">
                 <thead>
                     <tr>
                       <th scope="col">Quantidade</th>
@@ -43,9 +43,20 @@
                         banana
                     </td>
                     <td>
-                        <div class="edit_button d-flex gap-1">
-                            <button class="btn btn-dark btn-sm float-right" type="submit">remover</button><button class="btn btn-dark btn-sm float-right " type="submit">Editar</button>
-                        </div>
+                        <button class="btn btn-light btn-sm" onclick="showEditForm()">Editar</button>
+                        <button class="btn btn-light btn-sm" onclick="deletePassRow()">Deletar</button>
+                    </td>
+                </tr>   
+                <tr>
+                    <td>
+                        5kg
+                    </td>
+                    <td>
+                        banana
+                    </td>
+                    <td>
+                        <button class="btn btn-light btn-sm" onclick="showEditForm()">Editar</button>
+                        <button class="btn btn-light btn-sm" onclick="deletePassRow()">Deletar</button>
                     </td>
                 </tr>   
             </table>

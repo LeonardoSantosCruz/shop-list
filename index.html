@@ -15,23 +15,31 @@
     <main class="p-3 bg-info text-white rounded" id="">
       <header class="text-center h1">Lista de compras</header>
         <section>
-            <div class="input-group flex-nowrap">
-            
-                <input type="text" class="form-control" placeholder="Digite seu item" aria-label="Username">
-                
-                <button type="button" class="btn btn-dark">Adicionar</button>
-                </div>
-                
-            <div>
+            <div class="input-group mb-1">
+                <span class="input-group-text">Item:</span>
+                <input type="text" class="form-control" placeholder="Item" aria-label="Item">
+                <span class="input-group-text">Quantidade:</span>
+                <input type="text" class="form-control" placeholder="Quantidade" aria-label="Quantidade">
+              </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-dark mb-2">Adicionar</button> 
+            </div>
         </section>
       
-        <section>
-            <table id="buyingList">
-                <tr id="list_row_1 ">
+        <section>                
+            <table class="table table-sm table-striped table-dark" id="shopList">
+                <thead>
+                    <tr>
+                      <th scope="col">Quantidade</th>
+                      <th scope="col">Item</th>
+                      <th scope="col">Ações</th>
+                    </tr>
+                  </thead>
+                <tr>
                     <td>
                         5kg
                     </td>
-                    <td class="itemToAdd ps-2">
+                    <td>
                         banana
                     </td>
                     <td>
@@ -44,16 +52,16 @@
         
         </section>
   
-        <nav>
+        <!-- <nav>
         
             <button type="button" class="btn btn-dark">
                 <span>Acessar estoque</span>
             </button>
             
             <button type="button" class="btn btn-dark">Finalizar Compras</button>
-        </nav>
+        </nav> -->
         <footer>
-        &copy; 2022 - Created by Jesus Guinarte e Leonardo Cruz
+        &copy; 2022 - Created by Leonardo Cruz
         </footer>
     </main>
 

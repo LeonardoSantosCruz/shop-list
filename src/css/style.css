@@ -5,15 +5,25 @@ body{
 }
 
 main{
+    display: flex;
+    flex-direction: column;
     width: 90vw;
     max-width: 600px;
     align-items: center;
 }
 
+.container-1{
+    width: 90vw;
+    max-width: 600px;
+    align-items: center;
+}
 section{
-    max-width: 80vw;
-   
-    
+    max-width: 80vw;    
+}
+
+form{
+    max-width: 500px;
+    width: 80vw;
 }
 
 .form-control, .input-group-text {

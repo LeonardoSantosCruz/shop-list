@@ -12,25 +12,25 @@
 <body>
     
 <body class="mt-2">
-    <main class="p-3 bg-secondary text-white rounded" id="" >
-        <div class="container-1 p-3 bg bg-dark">
+    <main class="p-3 pb-1 bg-secondary text-white rounded" id="" >
+        <div class="container-1 p-3 bg bg-dark" id="container">
             <!-- Deixar opacity em 0.1 /\ -->
             <header class="text-center h1 bg-info rounded">Lista de compras</header>
             <section>
                 <div class="input-group mb-1">
                     <span class="input-group-text">Item:</span>
-                    <input type="text" class="form-control" placeholder="Item" aria-label="Item">
+                    <input type="text" class="form-control" placeholder="Item" aria-label="Item" id="itemName">
                     <span class="input-group-text">Qnt:</span>
-                    <input type="text" class="form-control" placeholder="Quantidade" aria-label="Quantidade">
+                    <input type="text" class="form-control" placeholder="Quantidade" aria-label="Quantidade" id="itemAmount">
                 </div>
                 
                 <div class="btn-group">
-                    <button type="button" class="btn btn-light mb-2">Adicionar</button> 
+                    <button type="button" class="btn btn-light mb-2" onclick="addToList()">Adicionar</button> 
                 </div>
             </section>
         
             <section>                
-                <table class="table table-sm table-striped table-dark text-wrap" id="shopList">
+                <table class="table table-sm table-striped table-dark text-wrap" id="shopListTable">
                     <thead>
                         <tr>
                         <th scope="col">Quantidade</th>
@@ -38,45 +38,21 @@
                         <th scope="col">Ações</th>
                         </tr>
                     </thead>
-                    <tr>
-                        <td>
-                            5kg
-                        </td>
-                        <td>
-                            banana
-                        </td>
-                        <td>
-                            <button class="btn btn-light btn-sm" onclick="showEditForm()">Editar</button>
-                            <button class="btn btn-light btn-sm" onclick="deleteItemRow()">Deletar</button>
-                        </td>
-                    </tr>   
-                    <tr>
-                        <td>
-                            2 Cx
-                        </td>
-                        <td>
-                            Morango
-                        </td>
-                        <td>
-                            <button class="btn btn-light btn-sm" onclick="showEditForm()">Editar</button>
-                            <button class="btn btn-light btn-sm" onclick="deleteItemRow()">Deletar</button>
-                        </td>
-                    </tr>   
                 </table>   
             </section>
         </div>
-        <form style="display:none;" class="bg-dark p-3 mt-3 rounded">
-            <!-- deixar displai block position absolute -->
+        <form onsubmit="updateItemRow();return false" style="display:none;" class="bg-dark p-3 mt-3 rounded" id="editForm">
+            <!-- deixar display block position absolute -->
             <!--se der bayblade no submit <form onsubmit="updateItemRow();return false"></form> -->
-            
+            <input type="hidden" id="editId">
             <div class="input-group mb-1">
                 <span class="input-group-text">Item:</span>
-                <input type="text" class="form-control" placeholder="Item" aria-label="Item">
+                <input type="text" class="form-control" placeholder="Item" aria-label="Item" id="editItem">
                 
             </div>
             <div class="input-group mb-1">
                 <span class="input-group-text">Qnt:</span>
-                <input type="text" class="form-control" placeholder="Quantidade" aria-label="Quantidade">
+                <input type="text" class="form-control" placeholder="Quantidade" aria-label="Quantidade" id="editAmount">
             </div>
             <button type="submit" class="btn btn-light btn-sm" onsubmit="updateItemRow()">Alterar</button>
             <!-- <input type="submit" class="btn btn-dark btn-sm" value="Alterar"> -->
@@ -91,7 +67,7 @@
             
             <button type="button" class="btn btn-dark">Finalizar Compras</button>
         </nav> -->
-        <footer>
+        <footer class="m-0">
         &copy; 2022 - Created by Leonardo Cruz
         </footer>
     </main>

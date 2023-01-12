@@ -11,8 +11,8 @@ let addToList= ()=>{
     const listedItemId= shoplistItens.length +1
     shoplistItens.push({
         id: listedItemId,
-        amount: document.getElementById('itemName').value,
-        name:  document.getElementById('itemAmount').value
+        amount: document.getElementById('itemAmount').value,
+        name:  document.getElementById('itemName').value
     });
     document.getElementById('itemName').value = '';
     document.getElementById('itemAmount').value = '';
@@ -36,8 +36,8 @@ let renderList = ()=>{
             <td>${shopItem.amount}</td>
             <td>${shopItem.name}</td>
             <td style="width: fit-content;">
-                <button class="btn btn-light btn-sm" onclick="showEditForm(${shopItem.id})">Editar</button>
-                <button class="btn btn-light btn-sm" onclick="deleteItemRow(${shopItem.id})">Deletar</button>
+                <button class="btn btn-info btn-sm" onclick="showEditForm(${shopItem.id})">Editar</button>
+                <button class="btn btn-danger btn-sm" onclick="deleteItemRow(${shopItem.id})">Deletar</button>
             </td>
         </tr>`
         shopListTable.innerHTML += itemRow
@@ -62,6 +62,20 @@ let hideEditForm = ()=>{
 }
 
 let updateItemRow = ()=>{
+    editedId = document.getElementById('editId').value
+    editedItem = document.getElementById('editItem').value
+    editedAmount = document.getElementById('editAmount').value
+    editedIndex = shoplistItens.findIndex(shopIndex => shopIndex.id == editedId)
+    shoplistItens[editedIndex] = {id: editedId, amount:editedAmount, name:editedItem}
+    renderList()
+    hideEditForm()
+}
 
+let deleteItemRow = (id)=>{
+    shoplistItens = shoplistItens.filter(shopItem => shopItem.id != id);
+    shoplistItens.forEach(shopItem=>{
+        shopItem.id = shoplistItens.indexOf(shopItem)+1
+    })
+    renderList()
 }
 renderList()

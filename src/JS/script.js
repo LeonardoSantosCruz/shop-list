@@ -7,20 +7,27 @@ let shoplistItens=[{
 
 
 let addToList= ()=>{
+    let itemName = document.getElementById('itemName').value ;
+    let itemAmount = document.getElementById('itemAmount').value;
     let itemType = document.getElementById('itemType');
     let typeValue = itemType.options[itemType.selectedIndex].value;
-    let itemAmount = document.getElementById('itemAmount').value;
-    let itemName = document.getElementById('itemName').value ;
-    const listedItemId= shoplistItens.length +1;
     
-    shoplistItens.push({
-        id: listedItemId,
-        amount: itemAmount + typeValue ,
-        name: itemName
-    });
-    itemName = '';
-    itemAmount = '';
-    renderList()
+    
+    const listedItemId= shoplistItens.length +1;
+    if(itemName==''||itemAmount==''||typeValue==''){
+        alert('Por favor, verifique se o NOME do seu item, a QUANTIDADE e a SELEÇÃO de unidades de medida estão devidamente preenchidas')
+    } else {
+        shoplistItens.push({
+            id: listedItemId,
+            amount: itemAmount + typeValue ,
+            name: itemName
+        });
+        itemName = '';
+        itemAmount = '';
+        renderList()
+        
+    }
+    
 };
 
 let renderList = ()=>{
@@ -72,13 +79,18 @@ let updateItemRow = ()=>{
     editedItem = document.getElementById('editItem').value
     editedAmount = document.getElementById('editAmount').value
     editedIndex = shoplistItens.findIndex(shopIndex => shopIndex.id == editedId)
-    shoplistItens[editedIndex] = {
-        id: editedId,
-        amount:editedAmount + editedtypeValue, 
-        name:editedItem
+    if(editedItem==''||editedAmount==''||editedtypeValue==''){
+        alert('Por favor, verifique se o NOME do seu item, a QUANTIDADE e a SELEÇÃO de unidades de medida estão devidamente preenchidas')
+    } else{
+        shoplistItens[editedIndex] = {
+            id: editedId,
+            amount:editedAmount + editedtypeValue, 
+            name:editedItem
+        }
+        renderList()
+        hideEditForm()
     }
-    renderList()
-    hideEditForm()
+    
 }
 
 let deleteItemRow = (id)=>{

@@ -28,9 +28,11 @@
                         <button class=" dropbtn "></button>
                         <div class="dropdown-content">
                         <option value="">Selecione</option>
-                        <option value=" Pct">Pct</option>
+                        <option value=" Pct">Pacote</option>
                         <option value=" Kg">Kg</option>
                         <option value=" g">g</option>
+                        <option value=" L">Litros</option>
+                        <option value=" ml">ml</option>
                         <option value=" saco(s)">saco(s)</option>
                         <option value=" Unid(s)">unid(s)</option>
                         </div>
@@ -54,7 +56,7 @@
                 </table>   
             </section>
         </div>
-        <form onsubmit="updateItemRow();return false" style="display:none;" class="bg-dark p-3 mt-3 rounded" id="editForm">
+        <form  style="display:none;" class="bg-dark p-3 mt-3 rounded" id="editForm">
             
             <input type="hidden" id="editId">
             <div class="input-group mb-1">
@@ -67,16 +69,18 @@
                 <select id="editItemType" class="dropdown btn btn-secondary">
                     <button class=" dropbtn "></button>
                     <div class="dropdown-content">
-                    <option value="">Selecione</option>
-                    <option value=" Pct">Pct</option>
-                    <option value=" Kg">Kg</option>
-                    <option value=" g">g</option>
-                    <option value=" saco(s)">saco(s)</option>
-                    <option value=" Unid(s)">unid(s)</option>
+                        <option value="">Selecione</option>
+                        <option value=" Pct">Pacote</option>
+                        <option value=" Kg">Kg</option>
+                        <option value=" g">g</option>
+                        <option value=" L">Litros</option>
+                        <option value=" ml">ml</option>
+                        <option value=" saco(s)">saco(s)</option>
+                        <option value=" Unid(s)">unid(s)</option>
                     </div>
                 </select>
             </div>
-            <button type="submit" class="btn btn-light btn-sm" onsubmit="updateItemRow()">Alterar</button>
+            <button type="submit" class="btn btn-light btn-sm" onclick="updateItemRow()">Alterar</button>
             
             <button class="btn btn-light btn-sm" onclick="hideEditForm()">Cancelar</button>
         </form>

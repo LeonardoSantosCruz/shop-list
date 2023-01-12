@@ -22,12 +22,16 @@ let addToList= ()=>{
             amount: itemAmount + typeValue ,
             name: itemName
         });
-        itemName = '';
-        itemAmount = '';
-        renderList()
         
+        
+        renderList()
+        document.getElementById('itemName').value=''
+        document.getElementById('itemAmount').value=''
+      
     }
     
+    itemName = '';
+    itemAmount = '';
 };
 
 let renderList = ()=>{

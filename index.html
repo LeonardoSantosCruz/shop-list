@@ -20,10 +20,23 @@
                 <div class="input-group mb-1">
                     <span class="input-group-text">Item:</span>
                     <input type="text" class="form-control" placeholder="Item" aria-label="Item" id="itemName">
-                    <span class="input-group-text">Qnt:</span>
-                    <input type="text" class="form-control" placeholder="Quantidade" aria-label="Quantidade" id="itemAmount">
                 </div>
-                
+                <div class="input-group mb-1">
+                    <span class="input-group-text">Qnt:</span>
+                    <input type="number" class="form-control" placeholder="Quantidade" aria-label="Quantidade" id="itemAmount">
+                    <select id="itemType" class="dropdown btn btn-secondary">
+                        <button class=" dropbtn "></button>
+                        <div class="dropdown-content">
+                        <option value="">Selecione</option>
+                        <option value=" Pct">Pct</option>
+                        <option value=" Kg">Kg</option>
+                        <option value=" g">g</option>
+                        <option value=" saco(s)">saco(s)</option>
+                        <option value=" Unid(s)">unid(s)</option>
+                        </div>
+                    </select>
+                    
+                </div>
                 <div class="btn-group">
                     <button type="button" class="btn btn-light mb-2" onclick="addToList()">Adicionar</button> 
                 </div>

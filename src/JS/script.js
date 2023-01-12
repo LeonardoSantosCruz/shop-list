@@ -7,15 +7,19 @@ let shoplistItens=[{
 
 
 let addToList= ()=>{
-   
-    const listedItemId= shoplistItens.length +1
+    let itemType = document.getElementById('itemType');
+    let typeValue = itemType.options[itemType.selectedIndex].value;
+    let itemAmount = document.getElementById('itemAmount').value;
+    let itemName = document.getElementById('itemName').value ;
+    const listedItemId= shoplistItens.length +1;
+    
     shoplistItens.push({
         id: listedItemId,
-        amount: document.getElementById('itemAmount').value,
-        name:  document.getElementById('itemName').value
+        amount: itemAmount + typeValue ,
+        name: itemName
     });
-    document.getElementById('itemName').value = '';
-    document.getElementById('itemAmount').value = '';
+    itemName = '';
+    itemAmount = '';
     renderList()
 };
 

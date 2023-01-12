@@ -55,20 +55,29 @@
             </section>
         </div>
         <form onsubmit="updateItemRow();return false" style="display:none;" class="bg-dark p-3 mt-3 rounded" id="editForm">
-            <!-- deixar display block position absolute -->
-            <!--se der bayblade no submit <form onsubmit="updateItemRow();return false"></form> -->
+            
             <input type="hidden" id="editId">
             <div class="input-group mb-1">
                 <span class="input-group-text">Item:</span>
-                <input type="text" class="form-control" placeholder="Item" aria-label="Item" id="editItem">
-                
+                <input type="text" class="form-control" placeholder="Item" aria-label="Item" id="editItem"> 
             </div>
             <div class="input-group mb-1">
                 <span class="input-group-text">Qnt:</span>
-                <input type="text" class="form-control" placeholder="Quantidade" aria-label="Quantidade" id="editAmount">
+                <input type="number" class="form-control" placeholder="Quantidade" aria-label="Quantidade" id="editAmount">
+                <select id="editItemType" class="dropdown btn btn-secondary">
+                    <button class=" dropbtn "></button>
+                    <div class="dropdown-content">
+                    <option value="">Selecione</option>
+                    <option value=" Pct">Pct</option>
+                    <option value=" Kg">Kg</option>
+                    <option value=" g">g</option>
+                    <option value=" saco(s)">saco(s)</option>
+                    <option value=" Unid(s)">unid(s)</option>
+                    </div>
+                </select>
             </div>
             <button type="submit" class="btn btn-light btn-sm" onsubmit="updateItemRow()">Alterar</button>
-            <!-- <input type="submit" class="btn btn-dark btn-sm" value="Alterar"> -->
+            
             <button class="btn btn-light btn-sm" onclick="hideEditForm()">Cancelar</button>
         </form>
   

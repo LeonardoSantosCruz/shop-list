@@ -1,6 +1,6 @@
 let shoplistItens=[{
     id:'1',
-    amount:'1kg',
+    amount:'1 kg',
     name:'Banana'
 }];
 // let shoplistItens=[]
@@ -54,7 +54,7 @@ let showEditForm = (id)=>{
     document.getElementById('editId').value = editedItem.id
     document.getElementById('editItem').value = editedItem.name
     document.getElementById('editAmount').value = editedItem.amount
-    document.getElementById('container').style.opacity="0.1"
+    document.getElementById('container').style.opacity="0.3"
     document.getElementById('editForm').style.display="block"
     document.getElementById('editForm').style.position="Absolute"
 }
@@ -66,11 +66,17 @@ let hideEditForm = ()=>{
 }
 
 let updateItemRow = ()=>{
+    editedItemType = document.getElementById('editItemType');
+    editedtypeValue = editedItemType.options[editedItemType.selectedIndex].value;
     editedId = document.getElementById('editId').value
     editedItem = document.getElementById('editItem').value
     editedAmount = document.getElementById('editAmount').value
     editedIndex = shoplistItens.findIndex(shopIndex => shopIndex.id == editedId)
-    shoplistItens[editedIndex] = {id: editedId, amount:editedAmount, name:editedItem}
+    shoplistItens[editedIndex] = {
+        id: editedId,
+        amount:editedAmount + editedtypeValue, 
+        name:editedItem
+    }
     renderList()
     hideEditForm()
 }

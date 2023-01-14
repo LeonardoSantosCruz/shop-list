@@ -19,6 +19,8 @@ main{
 }
 section{
     max-width: 80vw;    
+    align-self: center;
+    
 }
 
 
@@ -34,4 +36,21 @@ section{
 nav{
     display: flex;
     justify-content: space-between;
+}
+#stockTable{
+    width: 80vw;
+    max-width: 580px;
+    align-items: center;
+}
+#stockForm{
+    width: 90vw;
+    max-width: 600px;
+    align-items: center;
+}
+.footer{
+    width: 90vw;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

@@ -104,4 +104,17 @@ let deleteItemRow = (id)=>{
     })
     renderList()
 }
+
+let showStock=()=>{
+    document.getElementById('container').style.display="none"
+    document.getElementById('stockForm').style.display="block"
+    document.getElementById('stockForm').style.position="absolute"
+}
+
+let hideStock=()=>{
+    document.getElementById('container').style.display="block"
+    document.getElementById('stockForm').style.display="none"
+    document.getElementById('stockForm').style.position="static"
+}
+
 renderList()

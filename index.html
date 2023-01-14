@@ -12,9 +12,9 @@
 <body>
     
 <body class="mt-2">
-    <main class="p-3 pb-1 bg-secondary text-white rounded" id="" >
+    <main class="p-3 pb-1 bg-secondary text-white rounded"  >
         <div class="container-1 p-3 bg bg-dark" id="container">
-            <!-- Deixar opacity em 0.1 /\ -->
+            
             <header class="text-center h1 bg-primary rounded">Lista de compras</header>
             <section>
                 <div class="input-group mb-1">
@@ -25,10 +25,10 @@
                     <span class="input-group-text">Qnt:</span>
                     <input type="number" class="form-control" placeholder="Quantidade" aria-label="Quantidade" id="itemAmount">
                     
-                    <select id="itemType" class="btn btn-secondary dropdown-toggle">
+                    <select id="itemType" class="btn form-select bg-secondary text-white dropdown-toggle">
                         
-                        <div class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#"><option value="">Selecione</option></a></li>
+                        <div class="dropdown-menu bg-light dropdown-menu-end">
+                        <li><a class="dropdown-item " href="#"><option value="">Selecione</option></a></li>
                         <li><a class="dropdown-item" href="#"><option value=" Pct">Pacote</option></a></li>
                         <li><a class="dropdown-item" href="#"><option value=" Kg">Kg</option></a></li>
                         <li><a class="dropdown-item" href="#"><option value=" g">g</option></a></li>
@@ -57,9 +57,15 @@
                     </thead>
                 </table>   
             </section>
-            <!-- Formulário de edição escondido -->
-            <form  onsubmit="updateItemRow(); return false" style="display:none;" class="bg-dark p-3 mt-3 rounded" id="editForm">
+            <nav class="bg-dark">
             
+                <button type="button" onclick="showStock()" class="btn btn-outline-light">Acessar estoque</button>
+                
+                <!-- <button type="button" class="btn btn-outline-secondary">Finalizar Compras</button> -->
+            </nav>
+        </div>
+        <!-- Formulário de edição de item da lista escondido -->
+        <form  onsubmit="updateItemRow(); return false" style="display:none;" class="bg-dark p-3 mt-3 rounded" id="editForm">
             <input type="hidden" id="editId">
             <div class="input-group mb-1">
                 <span class="input-group-text">Item:</span>
@@ -68,8 +74,7 @@
             <div class="input-group mb-1">
                 <span class="input-group-text">Qnt:</span>
                 <input type="number" class="form-control" placeholder="Quantidade" aria-label="Quantidade" id="editAmount">
-                <select id="editItemType" class="btn btn-secondary dropdown-toggle">
-                    
+                <select id="editItemType" class="btn form-select bg-secondary text-white dropdown-toggle">
                     <div class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="#"><option value="">Selecione</option></a></li>
                         <li><a class="dropdown-item" href="#"><option value=" Pct">Pacote</option></a></li>
@@ -84,21 +89,66 @@
             </div>
             <button type="submit" class="btn btn-light btn-sm" onclick="updateItemRow()">Alterar</button>
             
-            <button class="btn btn-light btn-sm" onclick="hideEditForm()">Cancelar</button>
+            <button type="button" class="btn btn-light btn-sm" onclick="hideEditForm()">Cancelar</button>
         </form>
-        
-        <nav class="bg-dark">
-        
-            <button type="button" class="btn btn-outline-secondary">Acessar estoque</button>
+        <!-- Estoque escondido -->
+        <section style="display: none;" class=" p-2 bg-secondary text-white rounded" id="stockForm">    
+            <header class="text-center h1 bg-info rounded">Estoque(Em desenvolvimento)</header>   
+            <table class=" table table-sm table-bordered table-striped table-dark text-white" id="stockTable">
+                <thead >
+                    <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Item</th>
+                    <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>3 Kg</td>
+                        <td>Açúcar</td>
+                        <td style="width: fit-content;">
+                            <button class="btn btn-info btn-sm" onclick="">Editar</button>
+                            <button class="btn btn-danger btn-sm" onclick="">Deletar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table> 
+            <button type="button" onclick="hideStock()" class="btn btn-outline-light">Retornar à lista</button>
+            <div class="m-0 footer">
+                &copy; 2023 - Created by Leonardo Cruz
+            </div>
+        </section>
+        <!-- Formulário de edição dos itens do estoque escodido -->
+        <form  onsubmit="updateStockRow(); return false" style="display:none;" class="bg-dark p-3 mt-3 rounded" id="stockEditor">
+            <input type="hidden" id="editStockId">
+            <div class="input-group mb-1">
+                <span class="input-group-text">Item:</span>
+                <input type="text" class="form-control" placeholder="Item" aria-label="Item" id="editStockedItem"> 
+            </div>
+            <div class="input-group mb-1">
+                <span class="input-group-text">Qnt:</span>
+                <input type="number" class="form-control" placeholder="Quantidade" aria-label="Quantidade" id="editStockedAmount">
+                <select id="editStockedType" class="btn form-select bg-secondary text-white dropdown-toggle">
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#"><option value="">Selecione</option></a></li>
+                        <li><a class="dropdown-item" href="#"><option value=" Pct">Pacote</option></a></li>
+                        <li><a class="dropdown-item" href="#"><option value=" Kg">Kg</option></a></li>
+                        <li><a class="dropdown-item" href="#"><option value=" g">g</option></a></li>
+                        <li><a class="dropdown-item" href="#"><option value=" L">Litros</option></a></li>
+                        <li><a class="dropdown-item" href="#"><option value=" ml">ml</option></a></li>
+                        <li><a class="dropdown-item" href="#"><option value=" saco(s)">saco(s)</option></a></li>
+                        <li><a class="dropdown-item" href="#"><option value=" Unid(s)">unid(s)</option></a></li>
+                    </div>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-light btn-sm" onclick="updateStockRow()">Alterar</button>
             
-            <button type="button" class="btn btn-outline-secondary">Finalizar Compras</button>
-        </nav>
-        </div>
-        
-  
-       
+            <button type="button" class="btn btn-light btn-sm" onclick="hideEditStockForm()">Cancelar</button>
+        </form>
         <footer class="m-0">
-        &copy; 2022 - Created by Leonardo Cruz
+        &copy; 2023 - Created by Leonardo Cruz
         </footer>
     </main>
 

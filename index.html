@@ -57,8 +57,8 @@
                     </thead>
                 </table>   
             </section>
-        </div>
-        <form  onsubmit="updateItemRow(); return false" style="display:none;" class="bg-dark p-3 mt-3 rounded" id="editForm">
+            <!-- Formulário de edição escondido -->
+            <form  onsubmit="updateItemRow(); return false" style="display:none;" class="bg-dark p-3 mt-3 rounded" id="editForm">
             
             <input type="hidden" id="editId">
             <div class="input-group mb-1">
@@ -86,15 +86,17 @@
             
             <button class="btn btn-light btn-sm" onclick="hideEditForm()">Cancelar</button>
         </form>
-  
-        <!-- <nav>
         
-            <button type="button" class="btn btn-dark">
-                <span>Acessar estoque</span>
-            </button>
+        <nav class="bg-dark">
+        
+            <button type="button" class="btn btn-outline-secondary">Acessar estoque</button>
             
-            <button type="button" class="btn btn-dark">Finalizar Compras</button>
-        </nav> -->
+            <button type="button" class="btn btn-outline-secondary">Finalizar Compras</button>
+        </nav>
+        </div>
+        
+  
+       
         <footer class="m-0">
         &copy; 2022 - Created by Leonardo Cruz
         </footer>

@@ -21,10 +21,7 @@ section{
     max-width: 80vw;    
 }
 
-form{
-    max-width: 500px;
-    width: 80vw;
-}
+
 
 .form-control, .input-group-text {
     font-size: 14px;
@@ -33,4 +30,8 @@ form{
 .btn{
     max-width: fit-content;
     align-self: center;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
 }

@@ -24,20 +24,22 @@
                 <div class="input-group mb-1">
                     <span class="input-group-text">Qnt:</span>
                     <input type="number" class="form-control" placeholder="Quantidade" aria-label="Quantidade" id="itemAmount">
-                    <select id="itemType" class="dropdown btn btn-secondary">
-                        <button class=" dropbtn "></button>
-                        <div class="dropdown-content">
-                        <option value="">Selecione</option>
-                        <option value=" Pct">Pacote</option>
-                        <option value=" Kg">Kg</option>
-                        <option value=" g">g</option>
-                        <option value=" L">Litros</option>
-                        <option value=" ml">ml</option>
-                        <option value=" saco(s)">saco(s)</option>
-                        <option value=" Unid(s)">unid(s)</option>
+                    
+                    <select id="itemType" class="btn btn-secondary dropdown-toggle">
+                        
+                        <div class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#"><option value="">Selecione</option></a></li>
+                        <li><a class="dropdown-item" href="#"><option value=" Pct">Pacote</option></a></li>
+                        <li><a class="dropdown-item" href="#"><option value=" Kg">Kg</option></a></li>
+                        <li><a class="dropdown-item" href="#"><option value=" g">g</option></a></li>
+                        <li><a class="dropdown-item" href="#"><option value=" L">Litros</option></a></li>
+                        <li><a class="dropdown-item" href="#"><option value=" ml">ml</option></a></li>
+                        <li><a class="dropdown-item" href="#"><option value=" saco(s)">saco(s)</option></a></li>
+                        <li><a class="dropdown-item" href="#"><option value=" Unid(s)">unid(s)</option></a></li>
                         </div>
                     </select>
-                    
+
+                  
                 </div>
                 <div class="btn-group">
                     <button type="button" class="btn btn-light mb-2" onclick="addToList()">Adicionar</button> 
@@ -66,17 +68,17 @@
             <div class="input-group mb-1">
                 <span class="input-group-text">Qnt:</span>
                 <input type="number" class="form-control" placeholder="Quantidade" aria-label="Quantidade" id="editAmount">
-                <select id="editItemType" class="dropdown btn btn-secondary">
-                    <button class=" dropbtn "></button>
-                    <div class="dropdown-content">
-                        <option value="">Selecione</option>
-                        <option value=" Pct">Pacote</option>
-                        <option value=" Kg">Kg</option>
-                        <option value=" g">g</option>
-                        <option value=" L">Litros</option>
-                        <option value=" ml">ml</option>
-                        <option value=" saco(s)">saco(s)</option>
-                        <option value=" Unid(s)">unid(s)</option>
+                <select id="editItemType" class="btn btn-secondary dropdown-toggle">
+                    
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#"><option value="">Selecione</option></a></li>
+                        <li><a class="dropdown-item" href="#"><option value=" Pct">Pacote</option></a></li>
+                        <li><a class="dropdown-item" href="#"><option value=" Kg">Kg</option></a></li>
+                        <li><a class="dropdown-item" href="#"><option value=" g">g</option></a></li>
+                        <li><a class="dropdown-item" href="#"><option value=" L">Litros</option></a></li>
+                        <li><a class="dropdown-item" href="#"><option value=" ml">ml</option></a></li>
+                        <li><a class="dropdown-item" href="#"><option value=" saco(s)">saco(s)</option></a></li>
+                        <li><a class="dropdown-item" href="#"><option value=" Unid(s)">unid(s)</option></a></li>
                     </div>
                 </select>
             </div>
@@ -99,5 +101,7 @@
     </main>
 
  <script src="./src/JS/script.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

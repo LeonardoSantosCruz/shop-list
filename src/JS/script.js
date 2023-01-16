@@ -121,7 +121,7 @@ let updateItemRow = ()=>{
     editedItem = document.getElementById('editItem').value
     editedAmount = document.getElementById('editAmount').value
     editedIndex = shoplistItens.findIndex(shopIndex => shopIndex.id == editedId)
-    if(editedItem==''||editedAmount==''||editedAmount<=0||editedtypeValue==''){
+    if(editedItem==''||editedAmount==''||editedAmount<0||editedtypeValue==''){
         alert('Por favor, verifique se o NOME do seu item, a QUANTIDADE e a SELEÇÃO de unidades de medida estão devidamente preenchidas')
     } else{
         shoplistItens[editedIndex] = {

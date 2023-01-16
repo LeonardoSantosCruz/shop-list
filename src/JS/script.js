@@ -98,12 +98,20 @@ let updateItemRow = ()=>{
 }
 
 let deleteItemRow = (id)=>{
-    shoplistItens = shoplistItens.filter(shopItem => shopItem.id != id);
-    shoplistItens.forEach(shopItem=>{
-        shopItem.id = shoplistItens.indexOf(shopItem)+1
-    })
-    renderList()
+    let selectedToDelete= shoplistItens[id-1].name
+    let confirmation = confirm(`Deseja deletar ${(selectedToDelete)} da lista?`)
+    if(confirmation==true){
+        shoplistItens = shoplistItens.filter(shopItem => shopItem.id != id);
+        shoplistItens.forEach(shopItem=>{
+            shopItem.id = shoplistItens.indexOf(shopItem)+1
+        })
+        renderList()
+    } else{
+        renderList()
+    }
+
 }
+
 
 let showStock=()=>{
     document.getElementById('container').style.display="none"

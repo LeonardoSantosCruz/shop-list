@@ -1,12 +1,16 @@
 let shoplistItens=[{
     id:'1',
     amount:'1 kg',
-    name:'Banana'
+    desc:'Banana'
+},{
+    id:'2',
+    amount:'3 kg',
+    desc:'Laranja'
 }];
 let stocklistItens=[{
     id:'1',
-    amount:'3 Kg',
-    name:'Açúcar'
+    amount: '3 kg',
+    desc:'cenoura'
 }]
 
 
@@ -24,7 +28,7 @@ let addToList= ()=>{
         shoplistItens.push({
             id: listedItemId,
             amount: itemAmount + typeValue ,
-            name: itemName
+            desc: itemName
         });
         
         
@@ -53,7 +57,7 @@ let renderList = ()=>{
         const itemRow=`
         <tr>
             <td>${shopItem.amount}</td>
-            <td>${shopItem.name}</td>
+            <td>${shopItem.desc}</td>
             <td style="width: fit-content;">
                 <button class="btn btn-info btn-sm" onclick="showEditForm(${shopItem.id})">Editar</button>
                 <button class="btn btn-danger btn-sm" onclick="deleteItemRow(${shopItem.id})">Deletar</button>
@@ -76,17 +80,19 @@ let renderStock = ()=>{
         </thead>
     `
     stocklistItens.forEach(stockItem =>{
+        stockItem.id = stocklistItens.indexOf(stockItem)+1
         const stockRow=`
         <tr>
             <td>${stockItem.id}</td>
             <td>${stockItem.amount}</td>
-            <td>${stockItem.name}</td>
+            <td>${stockItem.desc}</td>
             <td style="width: fit-content;">
                 <button class="btn btn-info btn-sm" onclick="showStockEditor(${stockItem.id})">Editar</button>
                 <button class="btn btn-danger btn-sm" onclick="deleteStockRow(${stockItem.id})">Deletar</button>
             </td>
         </tr>`
         stockListTable.innerHTML += stockRow
+        
     })
 }
 
@@ -94,7 +100,7 @@ let showEditForm = (id)=>{
     
     const editedItem = shoplistItens.find(listItem => listItem.id == id)
     document.getElementById('editId').value = editedItem.id
-    document.getElementById('editItem').value = editedItem.name
+    document.getElementById('editItem').value = editedItem.desc
     document.getElementById('editAmount').value = editedItem.amount
     document.getElementById('container').style.opacity="0.3"
     document.getElementById('editForm').style.display="block"
@@ -121,7 +127,7 @@ let updateItemRow = ()=>{
         shoplistItens[editedIndex] = {
             id: editedId,
             amount:editedAmount + editedtypeValue, 
-            name:editedItem
+            desc:editedItem
         }
         renderList()
         hideEditForm()
@@ -130,7 +136,7 @@ let updateItemRow = ()=>{
 
 
 let deleteItemRow = (id)=>{
-    let selectedToDelete= shoplistItens[id-1].name
+    let selectedToDelete= shoplistItens[id-1].desc
     let confirmation = confirm(`Deseja deletar ${(selectedToDelete)} da lista?`)
     if(confirmation==true){
         shoplistItens = shoplistItens.filter(shopItem => shopItem.id != id);
@@ -157,10 +163,10 @@ let hideStock=()=>{
     document.getElementById('stockForm').style.position="static"
 }
 
-let showStockEditor =(stockId)=>{
-    stockEditItem = stocklistItens.find(editStockitem=>editStockitem.id == stockId)
+let showStockEditor =(stockItemId)=>{
+    stockEditItem = stocklistItens.find(editStockitem=>editStockitem.id == stockItemId)
     editStockId= document.getElementById('editStockId').value= stockEditItem.id
-    editStockedItem = document.getElementById('editStockedItem').value = stockEditItem.name
+    editStockedItem = document.getElementById('editStockedItem').value = stockEditItem.desc
     editStockedAmount = document.getElementById('editStockedAmount').value = stockEditItem.amount
     document.getElementById('stockForm').style.opacity = '0.3'
     document.getElementById('stockEditor').style.display='block'
@@ -186,7 +192,7 @@ let updateStockRow=()=>{
         stocklistItens[updatedIndex] = {
             id:updatedStockedId,
             amount:updatedStockedAmount + updatedtypeValue,
-            name:updatedStockedName
+            desc:updatedStockedName
         }
         renderStock()
         hideStockEditor()
@@ -195,18 +201,38 @@ let updateStockRow=()=>{
 }
 
 let deleteStockRow=(id)=>{
-    let markedToDelet= stocklistItens[id-1].name
+    let markedToDelet= stocklistItens[id-1].desc
     let confirmation = confirm(`Deseja deletar ${(markedToDelet)} do estoque?`)
     if(confirmation==true){
         stocklistItens = stocklistItens.filter(stockItem => stockItem.id != id);
-        stocklistItens.forEach(stockItem=>{
-            stockItem.id = stocklistItens.indexOf(stockItem)+1
-        })
+        
         renderStock()
     } else{
         renderStock()
     }
 }
+
+
+
+let sendToStock=()=>{
+    let confirmation = confirm(`Aperte "OK" para ENVIAR seus itens na lista para seu ESTOQUE, aperte "CANCELAR" para retornar à lista sem alterá-la`)
+    if(confirmation==true){
+        for(cont=shoplistItens.length;cont>0;cont=cont-1){
+            stocklistItens.push(shoplistItens[0])
+            shoplistItens.shift()
+        } 
+    }
+      
+    renderList()
+    renderStock()
+}
+// let clearList=()=>{
+//     shoplistItens.forEach(clearLit =>{
+//         clearLit.splice()
+//     })
+//     }
+
+
 renderStock()
 renderList()
 // renderStock()

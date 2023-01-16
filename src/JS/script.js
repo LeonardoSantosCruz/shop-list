@@ -106,9 +106,7 @@ let showEditForm = (id)=>{
 let hideEditForm = ()=>{
     document.getElementById('container').style.opacity="1"
     document.getElementById('editForm').style.display="none"
-    
 }
-
 
 let updateItemRow = ()=>{
     editedItemType = document.getElementById('editItemType');
@@ -130,6 +128,7 @@ let updateItemRow = ()=>{
     }  
 }
 
+
 let deleteItemRow = (id)=>{
     let selectedToDelete= shoplistItens[id-1].name
     let confirmation = confirm(`Deseja deletar ${(selectedToDelete)} da lista?`)
@@ -142,7 +141,6 @@ let deleteItemRow = (id)=>{
     } else{
         renderList()
     }
-
 }
 
 let showStock=()=>{
@@ -172,9 +170,29 @@ let showStockEditor =(stockId)=>{
 let hideStockEditor=()=>{
     document.getElementById('stockForm').style.opacity = '1'
     document.getElementById('stockEditor').style.display='none'
-    
 }
 
+
+let updateStockRow=()=>{
+    updatedItemType = document.getElementById('editStockedType');
+    updatedtypeValue = updatedItemType.options[updatedItemType.selectedIndex].value;
+    updatedStockedId = document.getElementById('editStockId').value
+    updatedStockedName= document.getElementById('editStockedItem').value
+    updatedStockedAmount= document.getElementById('editStockedAmount').value
+    updatedIndex= stocklistItens.findIndex(stockItem => stockItem.id ==updatedStockedId )
+    if(updatedStockedName==''||updatedStockedAmount==''||updatedStockedAmount<0||updatedtypeValue==''){
+        alert('Por favor, verifique se o NOME do seu item, a QUANTIDADE e a SELEÇÃO de unidades de medida estão devidamente preenchidas')
+    } else{
+        stocklistItens[updatedIndex] = {
+            id:updatedStockedId,
+            amount:updatedStockedAmount + updatedtypeValue,
+            name:updatedStockedName
+        }
+        renderStock()
+        hideStockEditor()
+        
+    }
+}
 
 renderList()
 // renderStock()

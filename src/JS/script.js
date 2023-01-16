@@ -194,5 +194,19 @@ let updateStockRow=()=>{
     }
 }
 
+let deleteStockRow=(id)=>{
+    let markedToDelet= stocklistItens[id-1].name
+    let confirmation = confirm(`Deseja deletar ${(markedToDelet)} do estoque?`)
+    if(confirmation==true){
+        stocklistItens = stocklistItens.filter(stockItem => stockItem.id != id);
+        stocklistItens.forEach(stockItem=>{
+            stockItem.id = stocklistItens.indexOf(stockItem)+1
+        })
+        renderStock()
+    } else{
+        renderStock()
+    }
+}
+renderStock()
 renderList()
 // renderStock()

@@ -3,7 +3,11 @@ let shoplistItens=[{
     amount:'1 kg',
     name:'Banana'
 }];
-// let shoplistItens=[]
+let stocklistItens=[{
+    id:'1',
+    amount:'3 Kg',
+    name:'Açúcar'
+}]
 
 
 let addToList= ()=>{
@@ -59,6 +63,33 @@ let renderList = ()=>{
     })
 }
 
+let renderStock = ()=>{
+    let stockListTable = document.getElementById('stockTable')
+    stockListTable.innerHTML=`
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Quantidade</th>
+                <th scope="col">Item</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+    `
+    stocklistItens.forEach(stockItem =>{
+        const stockRow=`
+        <tr>
+            <td>${stockItem.id}</td>
+            <td>${stockItem.amount}</td>
+            <td>${stockItem.name}</td>
+            <td style="width: fit-content;">
+                <button class="btn btn-info btn-sm" onclick="showStockEditor(${stockItem.id})">Editar</button>
+                <button class="btn btn-danger btn-sm" onclick="deleteStockRow(${stockItem.id})">Deletar</button>
+            </td>
+        </tr>`
+        stockListTable.innerHTML += stockRow
+    })
+}
+
 let showEditForm = (id)=>{
     
     const editedItem = shoplistItens.find(listItem => listItem.id == id)
@@ -70,11 +101,14 @@ let showEditForm = (id)=>{
     document.getElementById('editForm').style.position="Absolute"
 }
 
+
+
 let hideEditForm = ()=>{
     document.getElementById('container').style.opacity="1"
     document.getElementById('editForm').style.display="none"
     
 }
+
 
 let updateItemRow = ()=>{
     editedItemType = document.getElementById('editItemType');
@@ -93,8 +127,7 @@ let updateItemRow = ()=>{
         }
         renderList()
         hideEditForm()
-    }
-    
+    }  
 }
 
 let deleteItemRow = (id)=>{
@@ -112,11 +145,12 @@ let deleteItemRow = (id)=>{
 
 }
 
-
 let showStock=()=>{
+    renderStock()
     document.getElementById('container').style.display="none"
     document.getElementById('stockForm').style.display="block"
     document.getElementById('stockForm').style.position="absolute"
+
 }
 
 let hideStock=()=>{
@@ -125,4 +159,22 @@ let hideStock=()=>{
     document.getElementById('stockForm').style.position="static"
 }
 
+let showStockEditor =(stockId)=>{
+    stockEditItem = stocklistItens.find(editStockitem=>editStockitem.id == stockId)
+    editStockId= document.getElementById('editStockId').value= stockEditItem.id
+    editStockedItem = document.getElementById('editStockedItem').value = stockEditItem.name
+    editStockedAmount = document.getElementById('editStockedAmount').value = stockEditItem.amount
+    document.getElementById('stockForm').style.opacity = '0.3'
+    document.getElementById('stockEditor').style.display='block'
+    document.getElementById('stockEditor').style.position='absolute'
+}
+
+let hideStockEditor=()=>{
+    document.getElementById('stockForm').style.opacity = '1'
+    document.getElementById('stockEditor').style.display='none'
+    
+}
+
+
 renderList()
+// renderStock()

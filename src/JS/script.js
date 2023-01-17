@@ -202,8 +202,8 @@ let updateStockRow=()=>{
 
 let deleteStockRow=(id)=>{
     let markedToDelet= stocklistItens[id-1].desc
-    let confirmation = confirm(`Deseja deletar ${(markedToDelet)} do estoque?`)
-    if(confirmation==true){
+    let deleteConfirmation = confirm(`Deseja deletar ${(markedToDelet)} do estoque?`)
+    if(deleteConfirmation==true){
         stocklistItens = stocklistItens.filter(stockItem => stockItem.id != id);
         
         renderStock()
@@ -215,8 +215,8 @@ let deleteStockRow=(id)=>{
 
 
 let sendToStock=()=>{
-    let confirmation = confirm(`Aperte "OK" para ENVIAR seus itens na lista para seu ESTOQUE, aperte "CANCELAR" para retornar à lista sem alterá-la`)
-    if(confirmation==true){
+    let sendConfirmation = confirm(`Ao apertar "OK" você enviará todos os itens da lista para seu estoque e LIMPARÁ a lista, caso deseje cancelar, por favor, aperte "Cancelar"!`)
+    if(sendConfirmation==true){
         for(cont=shoplistItens.length;cont>0;cont=cont-1){
             stocklistItens.push(shoplistItens[0])
             shoplistItens.shift()
@@ -226,13 +226,24 @@ let sendToStock=()=>{
     renderList()
     renderStock()
 }
-// let clearList=()=>{
-//     shoplistItens.forEach(clearLit =>{
-//         clearLit.splice()
-//     })
-//     }
 
+let clearList=()=>{
+    let clearListConfirmation = confirm(`Aperte "OK" para DELETAR todos os itens da lista, aperte "CANCELAR" para retornar à lista sem alterá-la!`)
+    if(clearListConfirmation==true)
+    for(cont=shoplistItens.length;cont>0;cont=cont-1){
+        shoplistItens.shift()
+    }
+    renderList()
+    }
 
+    let clearStock=()=>{
+        let clearStockConfirmation = confirm(`Aperte "OK" para DELETAR todos os itens da lista, aperte "CANCELAR" para retornar à lista sem alterá-la!`)
+        if(clearStockConfirmation==true)
+        for(cont=stocklistItens.length;cont>0;cont=cont-1){
+            stocklistItens.shift()
+        }
+        renderStock()
+        }
 renderStock()
 renderList()
 // renderStock()

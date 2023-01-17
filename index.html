@@ -53,9 +53,9 @@
             </section>
             <nav class="bg-dark">
             
-                <button type="button" onclick="showStock()" class="btn btn-outline-light">Acessar estoque</button>
-                
-                <button type="button" class="btn btn-outline-light" onclick="sendToStock()">Finalizar Compras</button>
+                <button type="button" onclick="showStock()" class="btn btn-outline-light">Estoque</button>
+                <button type="button" onclick="clearList()" class="btn btn-outline-danger">Limpar lista</button>
+                <button type="button" class="btn btn-outline-light" onclick="sendToStock()">Enviar P/ estoque</button>
             </nav>
         </div>
         <!-- Formulário de edição de item da lista escondido -->
@@ -110,7 +110,11 @@
                     </tr>
                 </tbody> -->
             </table> 
-            <button type="button" onclick="hideStock()" class="btn btn-outline-light">Retornar à lista</button>
+            <div class="px-1 d-flex justify-content-between" >
+                <button type="button" onclick="hideStock()" class="btn btn-outline-light">Retornar à lista</button>
+                <button type="button" onclick="clearStock()" class="btn btn-outline-danger">Limpar estoque</button>
+            </div>
+            
             <div class="m-0 footer">
                 &copy; 2023 - Created by Leonardo Cruz
             </div>

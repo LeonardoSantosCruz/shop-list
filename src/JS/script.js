@@ -1,29 +1,37 @@
 let shoplistItens=[{
     id:'1',
     amount:'1 kg',
-    desc:'Banana'
+    desc:'Banana',
+    numberAmount: 1,
+    typeAmount: 'kg'
 },{
     id:'2',
     amount:'3 kg',
-    desc:'Laranja'
+    desc:'Laranja',
+    numberAmount: 3,
+    typeAmount: 'kg'
 }];
 let stocklistItens=[{
     id:'1',
     amount: '1 kg',
-    desc:'Banana'
+    desc:'Banana',
+    numberAmount:1,
+    typeAmount: 'kg'
 }]
 
 // logica do comparativo entre os elementos "desc" dos objetos em cada indice dos arrays stocklistItens e shoplistItens
 // stocklistItens.forEach(resemblanceTest => {
 //     for(i=0;i<shoplistItens.length;i++){
 //         if (JSON.stringify(shoplistItens[i].desc)==JSON.stringify(resemblanceTest.desc)){
+//             shopNumber= parseFloat
 //             resemblanceTest={
-//                 id: shoplistItens[0].id ,
-//                 amount: 10,
-//                 desc: shoplistItens[0].desc
+//                 id: stocklistItens.indexOf(resemblanceTest)+1 ,
+//                 amount: `${resemblanceTest.numberAmount + shoplistItens[i].numberAmount}`+,
+//                 desc: shoplistItens[0].desc,
+//                 numberAmount:shoplistItens[i].numberAmount
 //             }
-//             alert(resemblanceTest.desc)
-//             console.log(resemblanceTest.amount)
+//             alert(resemblanceTest.amount)
+//             console.log(resemblanceTest.desc)
 //             console.log(resemblanceTest.id)
 
 //         }
@@ -47,7 +55,9 @@ let addToList= ()=>{
         shoplistItens.push({
             id: listedItemId,
             amount: itemAmount + typeValue ,
-            desc: itemName
+            desc: itemName,
+            numberAmount:itemAmount,
+            typeAmount: typeValue
         });
         
         
@@ -146,7 +156,9 @@ let updateItemRow = ()=>{
         shoplistItens[editedIndex] = {
             id: editedId,
             amount:editedAmount + editedtypeValue, 
-            desc:editedItem
+            desc:editedItem,
+            numberAmount:editedAmount,
+            typeAmount: editedtypeValue
         }
         renderList()
         hideEditForm()
@@ -211,7 +223,9 @@ let updateStockRow=()=>{
         stocklistItens[updatedIndex] = {
             id:updatedStockedId,
             amount:updatedStockedAmount + updatedtypeValue,
-            desc:updatedStockedName
+            desc:updatedStockedName,
+            numberAmount:updatedStockedAmount,
+            typeAmount: updatedtypeValue
         }
         renderStock()
         hideStockEditor()

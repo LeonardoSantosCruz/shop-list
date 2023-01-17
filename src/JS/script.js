@@ -218,8 +218,8 @@ let sendToStock=()=>{
                 stocklistItens.push(listItem)
                 
             } else{
-                stocklistItens[index].numberAmount+=listItem.numberAmount
-                stocklistItens[index].amount=stocklistItens[index].numberAmount +' '+ stocklistItens[index].typeAmount
+                stocklistItens[index].numberAmount= (parseFloat(stocklistItens[index].numberAmount) + parseFloat(listItem.numberAmount))
+                stocklistItens[index].amount=stocklistItens[index].numberAmount + stocklistItens[index].typeAmount
             }
             
         } )

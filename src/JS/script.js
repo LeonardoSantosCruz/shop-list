@@ -17,28 +17,17 @@ let stocklistItens=[{
     desc:'Banana',
     numberAmount:1,
     typeAmount: 'kg'
+},
+{
+    id:'2',
+    amount:'5 kg',
+    desc:'Laranja',
+    numberAmount: 5,
+    typeAmount: 'kg'
 }]
 
 // logica do comparativo entre os elementos "desc" dos objetos em cada indice dos arrays stocklistItens e shoplistItens
-// stocklistItens.forEach(resemblanceTest => {
-//     for(i=0;i<shoplistItens.length;i++){
-//         if (JSON.stringify(shoplistItens[i].desc)==JSON.stringify(resemblanceTest.desc)){
-//             shopNumber= parseFloat
-//             resemblanceTest={
-//                 id: stocklistItens.indexOf(resemblanceTest)+1 ,
-//                 amount: `${resemblanceTest.numberAmount + shoplistItens[i].numberAmount}`+,
-//                 desc: shoplistItens[0].desc,
-//                 numberAmount:shoplistItens[i].numberAmount
-//             }
-//             alert(resemblanceTest.amount)
-//             console.log(resemblanceTest.desc)
-//             console.log(resemblanceTest.id)
 
-//         }
-//         console.log(i)
-//     }
- 
-// });
 
 
 let addToList= ()=>{
@@ -93,35 +82,6 @@ let renderList = ()=>{
             </td>
         </tr>`
         shopListTable.innerHTML += itemRow
-    })
-}
-
-let renderStock = ()=>{
-    let stockListTable = document.getElementById('stockTable')
-    stockListTable.innerHTML=`
-        <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Quantidade</th>
-                <th scope="col">Item</th>
-                <th scope="col">Ações</th>
-            </tr>
-        </thead>
-    `
-    stocklistItens.forEach(stockItem =>{
-        stockItem.id = stocklistItens.indexOf(stockItem)+1
-        const stockRow=`
-        <tr>
-            <td>${stockItem.id}</td>
-            <td>${stockItem.amount}</td>
-            <td>${stockItem.desc}</td>
-            <td style="width: fit-content;">
-                <button class="btn btn-info btn-sm" onclick="showStockEditor(${stockItem.id})">Editar</button>
-                <button class="btn btn-danger btn-sm" onclick="deleteStockRow(${stockItem.id})">Deletar</button>
-            </td>
-        </tr>`
-        stockListTable.innerHTML += stockRow
-        
     })
 }
 
@@ -251,14 +211,63 @@ let sendToStock=()=>{
     let sendConfirmation = confirm(`Ao apertar "OK" você enviará todos os itens da lista para seu estoque e LIMPARÁ a lista, caso deseje cancelar, por favor, aperte "Cancelar"!`)
     if(sendConfirmation==true){
         for(cont=shoplistItens.length;cont>0;cont=cont-1){
-            stocklistItens.push(shoplistItens[0])
-            shoplistItens.shift()
+            stocklistItens.forEach(resemblanceTest => {
+                if (JSON.stringify(shoplistItens[0].desc)==JSON.stringify(resemblanceTest.desc)){
+                    let amountSum= parseFloat(resemblanceTest.numberAmount)  + parseFloat(shoplistItens[0].numberAmount)
+                    sendIndex = stocklistItens.findIndex(shopIndex => shopIndex.id == resemblanceTest.id)
+                    stocklistItens[sendIndex]={
+                        id: resemblanceTest.id,
+                        amount: `${amountSum} `+ resemblanceTest.typeAmount,
+                        desc: resemblanceTest.desc,
+                        numberAmount: `${amountSum}`  ,
+                        typeAmount:resemblanceTest.typeAmount
+                    }
+                    shoplistItens.shift()
+                    
+                }  else {
+                            stocklistItens.push(shoplistItens[0])
+                            shoplistItens.shift()
+                            
+                        }
+                renderList()
+                renderStock()
+            
+            });           
         } 
     }
-      
-    renderList()
-    renderStock()
 }
+
+
+let renderStock = ()=>{
+    let stockListTable = document.getElementById('stockTable')
+    stockListTable.innerHTML=`
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Quantidade</th>
+                <th scope="col">Item</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+    `
+    stocklistItens.forEach(stockItem =>{
+        stockItem.id = stocklistItens.indexOf(stockItem)+1
+        const stockRow=`
+        <tr>
+            <td>${stockItem.id}</td>
+            <td>${stockItem.amount}</td>
+            <td>${stockItem.desc}</td>
+            <td style="width: fit-content;">
+                <button class="btn btn-info btn-sm" onclick="showStockEditor(${stockItem.id})">Editar</button>
+                <button class="btn btn-danger btn-sm" onclick="deleteStockRow(${stockItem.id})">Deletar</button>
+            </td>
+        </tr>`
+        stockListTable.innerHTML += stockRow
+        
+    })
+}
+
+
 
 let clearList=()=>{
     let clearListConfirmation = confirm(`Aperte "OK" para DELETAR todos os itens da lista, aperte "CANCELAR" para retornar à lista sem alterá-la!`)
@@ -277,6 +286,6 @@ let clearList=()=>{
         }
         renderStock()
         }
-renderStock()
+
 renderList()
 renderStock()

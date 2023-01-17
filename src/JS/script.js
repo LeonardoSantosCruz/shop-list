@@ -11,6 +11,7 @@ let shoplistItens=[{
     numberAmount: 3,
     typeAmount: 'kg'
 }];
+
 let stocklistItens=[{
     id:'1',
     amount: '1 kg',
@@ -27,7 +28,7 @@ let stocklistItens=[{
 }]
 
 // logica do comparativo entre os elementos "desc" dos objetos em cada indice dos arrays stocklistItens e shoplistItens
-
+stocklistItens.find(callback => callback.desc == 'Banana'  )
 
 
 let addToList= ()=>{
@@ -189,7 +190,6 @@ let updateStockRow=()=>{
         }
         renderStock()
         hideStockEditor()
-        
     }
 }
 
@@ -210,30 +210,24 @@ let deleteStockRow=(id)=>{
 let sendToStock=()=>{
     let sendConfirmation = confirm(`Ao apertar "OK" você enviará todos os itens da lista para seu estoque e LIMPARÁ a lista, caso deseje cancelar, por favor, aperte "Cancelar"!`)
     if(sendConfirmation==true){
-        for(cont=shoplistItens.length;cont>0;cont=cont-1){
-            stocklistItens.forEach(resemblanceTest => {
-                if (JSON.stringify(shoplistItens[0].desc)==JSON.stringify(resemblanceTest.desc)){
-                    let amountSum= parseFloat(resemblanceTest.numberAmount)  + parseFloat(shoplistItens[0].numberAmount)
-                    sendIndex = stocklistItens.findIndex(shopIndex => shopIndex.id == resemblanceTest.id)
-                    stocklistItens[sendIndex]={
-                        id: resemblanceTest.id,
-                        amount: `${amountSum} `+ resemblanceTest.typeAmount,
-                        desc: resemblanceTest.desc,
-                        numberAmount: `${amountSum}`  ,
-                        typeAmount:resemblanceTest.typeAmount
-                    }
-                    shoplistItens.shift()
-                    
-                }  else {
-                            stocklistItens.push(shoplistItens[0])
-                            shoplistItens.shift()
-                            
-                        }
-                renderList()
-                renderStock()
+        
+        shoplistItens.forEach(listItem => {
+            const index= stocklistItens.findIndex(stockItem => stockItem.desc == listItem.desc &&stockItem.typeAmount==listItem.typeAmount)
             
-            });           
-        } 
+            if(index<0){
+                stocklistItens.push(listItem)
+                
+            } else{
+                stocklistItens[index].numberAmount+=listItem.numberAmount
+                stocklistItens[index].amount=stocklistItens[index].numberAmount +' '+ stocklistItens[index].typeAmount
+            }
+            
+        } )
+        shoplistItens = []
+        console.log(stocklistItens)
+        renderList()
+        renderStock()
+        
     }
 }
 
@@ -248,8 +242,7 @@ let renderStock = ()=>{
                 <th scope="col">Item</th>
                 <th scope="col">Ações</th>
             </tr>
-        </thead>
-    `
+        </thead>`
     stocklistItens.forEach(stockItem =>{
         stockItem.id = stocklistItens.indexOf(stockItem)+1
         const stockRow=`
@@ -278,14 +271,14 @@ let clearList=()=>{
     renderList()
     }
 
-    let clearStock=()=>{
+let clearStock=()=>{
         let clearStockConfirmation = confirm(`Aperte "OK" para DELETAR todos os itens da lista, aperte "CANCELAR" para retornar à lista sem alterá-la!`)
         if(clearStockConfirmation==true)
         for(cont=stocklistItens.length;cont>0;cont=cont-1){
             stocklistItens.shift()
         }
         renderStock()
-        }
+}
 
 renderList()
 renderStock()

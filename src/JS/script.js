@@ -9,9 +9,28 @@ let shoplistItens=[{
 }];
 let stocklistItens=[{
     id:'1',
-    amount: '3 kg',
-    desc:'cenoura'
+    amount: '1 kg',
+    desc:'Banana'
 }]
+
+// logica do comparativo entre os elementos "desc" dos objetos em cada indice dos arrays stocklistItens e shoplistItens
+// stocklistItens.forEach(resemblanceTest => {
+//     for(i=0;i<shoplistItens.length;i++){
+//         if (JSON.stringify(shoplistItens[i].desc)==JSON.stringify(resemblanceTest.desc)){
+//             resemblanceTest={
+//                 id: shoplistItens[0].id ,
+//                 amount: 10,
+//                 desc: shoplistItens[0].desc
+//             }
+//             alert(resemblanceTest.desc)
+//             console.log(resemblanceTest.amount)
+//             console.log(resemblanceTest.id)
+
+//         }
+//         console.log(i)
+//     }
+ 
+// });
 
 
 let addToList= ()=>{
@@ -246,4 +265,4 @@ let clearList=()=>{
         }
 renderStock()
 renderList()
-// renderStock()
+renderStock()

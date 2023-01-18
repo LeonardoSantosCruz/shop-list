@@ -1,13 +1,13 @@
 let shoplistItens=[{
     id:'1',
     amount:'1 kg',
-    desc:'Banana',
+    desc:'BANANA',
     numberAmount: 1,
     typeAmount: 'kg'
 },{
     id:'2',
     amount:'3 kg',
-    desc:'Laranja',
+    desc:'LARANJA',
     numberAmount: 3,
     typeAmount: 'kg'
 }];
@@ -15,14 +15,14 @@ let shoplistItens=[{
 let stocklistItens=[{
     id:'1',
     amount: '1 kg',
-    desc:'Banana',
+    desc:'BANANA',
     numberAmount:1,
     typeAmount: 'kg'
 },
 {
     id:'2',
     amount:'5 kg',
-    desc:'Laranja',
+    desc:'LARANJA',
     numberAmount: 5,
     typeAmount: 'kg'
 }]
@@ -32,7 +32,8 @@ stocklistItens.find(callback => callback.desc == 'Banana'  )
 
 
 let addToList= ()=>{
-    let itemName = document.getElementById('itemName').value ;
+    let receivedName= document.getElementById('itemName').value;
+    let itemName = receivedName.toUpperCase() ;
     let itemAmount = document.getElementById('itemAmount').value;
     let itemType = document.getElementById('itemType');
     let typeValue = itemType.options[itemType.selectedIndex].value;
@@ -108,7 +109,8 @@ let updateItemRow = ()=>{
     editedItemType = document.getElementById('editItemType');
     editedtypeValue = editedItemType.options[editedItemType.selectedIndex].value;
     editedId = document.getElementById('editId').value
-    editedItem = document.getElementById('editItem').value
+    receivedEditedItem= document.getElementById('editItem').value
+    editedItem = receivedEditedItem.toUpperCase()
     editedAmount = document.getElementById('editAmount').value
     editedIndex = shoplistItens.findIndex(shopIndex => shopIndex.id == editedId)
     if(editedItem==''||editedAmount==''||editedAmount<0||editedtypeValue==''){
@@ -175,7 +177,8 @@ let updateStockRow=()=>{
     updatedItemType = document.getElementById('editStockedType');
     updatedtypeValue = updatedItemType.options[updatedItemType.selectedIndex].value;
     updatedStockedId = document.getElementById('editStockId').value
-    updatedStockedName= document.getElementById('editStockedItem').value
+    receivedToUpgradeName =document.getElementById('editStockedItem').value
+    updatedStockedName= receivedToUpgradeName.toUpperCase()
     updatedStockedAmount= document.getElementById('editStockedAmount').value
     updatedIndex= stocklistItens.findIndex(stockItem => stockItem.id ==updatedStockedId )
     if(updatedStockedName==''||updatedStockedAmount==''||updatedStockedAmount<0||updatedtypeValue==''){

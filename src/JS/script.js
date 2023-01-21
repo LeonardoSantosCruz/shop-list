@@ -28,12 +28,12 @@ let stocklistItens=[{
 }]
 
 // logica do comparativo entre os elementos "desc" dos objetos em cada indice dos arrays stocklistItens e shoplistItens
-stocklistItens.find(callback => callback.desc == 'Banana'  )
+// stocklistItens.find(callback => callback.desc == 'Banana'  )
 
 
 let addToList= ()=>{
-    let receivedName= document.getElementById('itemName').value;
-    let itemName = receivedName.toUpperCase() ;
+    
+    let itemName = document.getElementById('itemName').value.toUpperCase() ;
     let itemAmount = document.getElementById('itemAmount').value;
     let itemType = document.getElementById('itemType');
     let typeValue = itemType.options[itemType.selectedIndex].value;
@@ -109,8 +109,7 @@ let updateItemRow = ()=>{
     editedItemType = document.getElementById('editItemType');
     editedtypeValue = editedItemType.options[editedItemType.selectedIndex].value;
     editedId = document.getElementById('editId').value
-    receivedEditedItem= document.getElementById('editItem').value
-    editedItem = receivedEditedItem.toUpperCase()
+    editedItem = document.getElementById('editItem').value.toUpperCase()
     editedAmount = document.getElementById('editAmount').value
     editedIndex = shoplistItens.findIndex(shopIndex => shopIndex.id == editedId)
     if(editedItem==''||editedAmount==''||editedAmount<0||editedtypeValue==''){
@@ -177,8 +176,7 @@ let updateStockRow=()=>{
     updatedItemType = document.getElementById('editStockedType');
     updatedtypeValue = updatedItemType.options[updatedItemType.selectedIndex].value;
     updatedStockedId = document.getElementById('editStockId').value
-    receivedToUpgradeName =document.getElementById('editStockedItem').value
-    updatedStockedName= receivedToUpgradeName.toUpperCase()
+    updatedStockedName= document.getElementById('editStockedItem').value.toUpperCase()
     updatedStockedAmount= document.getElementById('editStockedAmount').value
     updatedIndex= stocklistItens.findIndex(stockItem => stockItem.id ==updatedStockedId )
     if(updatedStockedName==''||updatedStockedAmount==''||updatedStockedAmount<0||updatedtypeValue==''){

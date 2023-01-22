@@ -58,33 +58,8 @@
                 <button type="button" class="btn btn-outline-light" onclick="sendToStock()">Enviar P/ estoque</button>
             </nav>
         </div>
-        <!-- Formulário de edição de item da lista escondido -->
-        <form  onsubmit="updateItemRow(); return false" style="display:none;" class="bg-dark p-3 mt-3 rounded" id="editForm">
-            <input type="hidden" id="editId">
-            <div class="input-group mb-1">
-                <span class="input-group-text">Item:</span>
-                <input type="text" class="form-control" placeholder="Item" aria-label="Item" id="editItem"> 
-            </div>
-            <div class="input-group mb-1">
-                <span class="input-group-text">Qnt:</span>
-                <input type="number" class="form-control" placeholder="Quantidade" aria-label="Quantidade" id="editAmount">
-                <select id="editItemType" class="btn form-select bg-secondary text-white dropdown-toggle">
-                    <div class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#"><option value="">Selecione</option></a></li>
-                        <li><a class="dropdown-item" href="#"><option value=" Pct">Pacote</option></a></li>
-                        <li><a class="dropdown-item" href="#"><option value=" Kg">Kg</option></a></li>
-                        <li><a class="dropdown-item" href="#"><option value=" g">g</option></a></li>
-                        <li><a class="dropdown-item" href="#"><option value=" L">Litros</option></a></li>
-                        <li><a class="dropdown-item" href="#"><option value=" ml">ml</option></a></li>
-                        <li><a class="dropdown-item" href="#"><option value=" saco(s)">saco(s)</option></a></li>
-                        <li><a class="dropdown-item" href="#"><option value=" Unid(s)">unid(s)</option></a></li>
-                    </div>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-light btn-sm" >Alterar</button>
-            
-            <button type="button" class="btn btn-light btn-sm" onclick="hideEditForm()">Cancelar</button>
-        </form>
+        
+       
         <!-- seção para bloqueio da tela principal quando aberta tela de edição -->
         <section id="z-indexed" style="width: 100vw;height: 100vh;display:none;z-index: 2;position: absolute;"></section>
         <!-- Estoque escondido -->
@@ -102,38 +77,65 @@
                 &copy; 2023 - Created by Leonardo Cruz
             </div>
         </section>
-        <!-- Formulário de edição dos itens do estoque escodido -->
-        <form  onsubmit="updateStockRow(); return false" style="display:none;" class="bg-dark p-3 mt-3 rounded" id="stockEditor">
-            <input type="hidden" id="editStockId">
-            <div class="input-group mb-1">
-                <span class="input-group-text">Item:</span>
-                <input type="text" class="form-control" placeholder="Item" aria-label="Item" id="editStockedItem"> 
-            </div>
-            <div class="input-group mb-1">
-                <span class="input-group-text">Qnt:</span>
-                <input type="number" class="form-control" placeholder="Quantidade" aria-label="Quantidade" id="editStockedAmount">
-                <select id="editStockedType" class="btn form-select bg-secondary text-white dropdown-toggle">
-                    <div class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#"><option value="">Selecione</option></a></li>
-                        <li><a class="dropdown-item" href="#"><option value=" Pct">Pacote</option></a></li>
-                        <li><a class="dropdown-item" href="#"><option value=" Kg">Kg</option></a></li>
-                        <li><a class="dropdown-item" href="#"><option value=" g">g</option></a></li>
-                        <li><a class="dropdown-item" href="#"><option value=" L">Litros</option></a></li>
-                        <li><a class="dropdown-item" href="#"><option value=" ml">ml</option></a></li>
-                        <li><a class="dropdown-item" href="#"><option value=" saco(s)">saco(s)</option></a></li>
-                        <li><a class="dropdown-item" href="#"><option value=" Unid(s)">unid(s)</option></a></li>
-                    </div>
-                </select>
-            </div>
-            <button type="button" class="btn btn-light btn-sm" onclick="updateStockRow()" >Alterar</button>
-            
-            <button type="button" class="btn btn-light btn-sm" onclick="hideStockEditor()">Cancelar</button>
-        </form>
+        
         <footer class="m-0" id="footerDiv">
         &copy; 2023 - Created by Leonardo Cruz
         </footer>
     </main>
-
+    <!-- Formulário de edição de item da lista escondido -->
+    <form  onsubmit="updateItemRow(); return false" style="display:none;" class="bg-dark p-3 mt-3 rounded" id="editForm">
+        <input type="hidden" id="editId">
+        <div class="input-group mb-1">
+            <span class="input-group-text">Item:</span>
+            <input type="text" class="form-control" placeholder="Item" aria-label="Item" id="editItem"> 
+        </div>
+        <div class="input-group mb-1">
+            <span class="input-group-text">Qnt:</span>
+            <input type="number" class="form-control" placeholder="Quantidade" aria-label="Quantidade" id="editAmount">
+            <select id="editItemType" class="btn form-select bg-secondary text-white dropdown-toggle">
+                <div class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="#"><option value="">Selecione</option></a></li>
+                    <li><a class="dropdown-item" href="#"><option value=" Pct">Pacote</option></a></li>
+                    <li><a class="dropdown-item" href="#"><option value=" Kg">Kg</option></a></li>
+                    <li><a class="dropdown-item" href="#"><option value=" g">g</option></a></li>
+                    <li><a class="dropdown-item" href="#"><option value=" L">Litros</option></a></li>
+                    <li><a class="dropdown-item" href="#"><option value=" ml">ml</option></a></li>
+                    <li><a class="dropdown-item" href="#"><option value=" saco(s)">saco(s)</option></a></li>
+                    <li><a class="dropdown-item" href="#"><option value=" Unid(s)">unid(s)</option></a></li>
+                </div>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-light btn-sm" >Alterar</button>
+        
+        <button type="button" class="btn btn-light btn-sm" onclick="hideEditForm()">Cancelar</button>
+    </form>
+    <!-- Formulário de edição dos itens do estoque escodido -->
+    <form  onsubmit="updateStockRow(); return false" style="display:none;" class="bg-dark p-3 mt-3 rounded" id="stockEditor">
+        <input type="hidden" id="editStockId">
+        <div class="input-group mb-1">
+            <span class="input-group-text">Item:</span>
+            <input type="text" class="form-control" placeholder="Item" aria-label="Item" id="editStockedItem"> 
+        </div>
+        <div class="input-group mb-1">
+            <span class="input-group-text">Qnt:</span>
+            <input type="number" class="form-control" placeholder="Quantidade" aria-label="Quantidade" id="editStockedAmount">
+            <select id="editStockedType" class="btn form-select bg-secondary text-white dropdown-toggle">
+                <div class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="#"><option value="">Selecione</option></a></li>
+                    <li><a class="dropdown-item" href="#"><option value=" Pct">Pacote</option></a></li>
+                    <li><a class="dropdown-item" href="#"><option value=" Kg">Kg</option></a></li>
+                    <li><a class="dropdown-item" href="#"><option value=" g">g</option></a></li>
+                    <li><a class="dropdown-item" href="#"><option value=" L">Litros</option></a></li>
+                    <li><a class="dropdown-item" href="#"><option value=" ml">ml</option></a></li>
+                    <li><a class="dropdown-item" href="#"><option value=" saco(s)">saco(s)</option></a></li>
+                    <li><a class="dropdown-item" href="#"><option value=" Unid(s)">unid(s)</option></a></li>
+                </div>
+            </select>
+        </div>
+        <button type="button" class="btn btn-light btn-sm" onclick="updateStockRow()" >Alterar</button>
+        
+        <button type="button" class="btn btn-light btn-sm" onclick="hideStockEditor()">Cancelar</button>
+    </form>
  <script src="./src/JS/script.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

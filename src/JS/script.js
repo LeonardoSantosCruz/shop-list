@@ -93,7 +93,8 @@ let showEditForm = (id)=>{
     document.getElementById('editId').value = editedItem.id
     document.getElementById('editItem').value = editedItem.desc
     document.getElementById('editAmount').value = editedItem.amount
-    document.getElementById('container').style.opacity="0.3"
+    document.getElementById('mainDiv').style.opacity="0.3"
+    // document.getElementById('container').style.opacity="0.3"
     document.getElementById('editForm').style.display="block"
     document.getElementById('z-indexed').style.display="block"
     document.getElementById('editForm').style.zIndex="3"
@@ -103,7 +104,8 @@ let showEditForm = (id)=>{
 
 
 let hideEditForm = ()=>{
-    document.getElementById('container').style.opacity="1"
+    document.getElementById('mainDiv').style.opacity="1"
+    // document.getElementById('container').style.opacity="1"
     document.getElementById('editForm').style.display="none"
     document.getElementById('z-indexed').style.display="none"
 }
@@ -164,7 +166,8 @@ let showStockEditor =(stockItemId)=>{
     editStockId= document.getElementById('editStockId').value= stockEditItem.id
     editStockedItem = document.getElementById('editStockedItem').value = stockEditItem.desc
     editStockedAmount = document.getElementById('editStockedAmount').value = stockEditItem.amount
-    document.getElementById('stockForm').style.opacity = '0.3'
+    // document.getElementById('stockForm').style.opacity = '0.3'
+    document.getElementById('mainDiv').style.opacity = '0.3'
     document.getElementById('footerDiv').style.opacity = '0.3'
     document.getElementById('stockEditor').style.display='block'
     document.getElementById('z-indexed').style.display="block"
@@ -174,7 +177,8 @@ let showStockEditor =(stockItemId)=>{
 }
 
 let hideStockEditor=()=>{
-    document.getElementById('stockForm').style.opacity = '1'
+    // document.getElementById('stockForm').style.opacity = '1'
+    document.getElementById('mainDiv').style.opacity = '1'
     document.getElementById('footerDiv').style.opacity = '1'
     document.getElementById('stockEditor').style.display='none'
     document.getElementById('z-indexed').style.display="none"

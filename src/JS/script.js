@@ -95,6 +95,8 @@ let showEditForm = (id)=>{
     document.getElementById('editAmount').value = editedItem.amount
     document.getElementById('container').style.opacity="0.3"
     document.getElementById('editForm').style.display="block"
+    document.getElementById('z-indexed').style.display="block"
+    document.getElementById('editForm').style.zIndex="3"
     document.getElementById('editForm').style.position="Absolute"
 }
 
@@ -103,6 +105,7 @@ let showEditForm = (id)=>{
 let hideEditForm = ()=>{
     document.getElementById('container').style.opacity="1"
     document.getElementById('editForm').style.display="none"
+    document.getElementById('z-indexed').style.display="none"
 }
 
 let updateItemRow = ()=>{
@@ -162,13 +165,20 @@ let showStockEditor =(stockItemId)=>{
     editStockedItem = document.getElementById('editStockedItem').value = stockEditItem.desc
     editStockedAmount = document.getElementById('editStockedAmount').value = stockEditItem.amount
     document.getElementById('stockForm').style.opacity = '0.3'
+    document.getElementById('footerDiv').style.opacity = '0.3'
     document.getElementById('stockEditor').style.display='block'
+    document.getElementById('z-indexed').style.display="block"
+    document.getElementById('footerDiv').style.display="none"
     document.getElementById('stockEditor').style.position='absolute'
+    document.getElementById('stockEditor').style.zIndex="3"
 }
 
 let hideStockEditor=()=>{
     document.getElementById('stockForm').style.opacity = '1'
+    document.getElementById('footerDiv').style.opacity = '1'
     document.getElementById('stockEditor').style.display='none'
+    document.getElementById('z-indexed').style.display="none"
+    document.getElementById('footerDiv').style.display="block"
 }
 
 

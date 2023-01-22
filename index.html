@@ -12,7 +12,7 @@
 <body>
     
 <body class="mt-2">
-    <main class="p-3 pb-1 bg-secondary text-white rounded"  >
+    <main class="p-3 pb-1 bg-secondary text-white rounded" id="mainDiv" >
         <div class="container-1 p-3 bg bg-dark" id="container">
             
             <header class="text-center h1 bg-primary rounded">Lista de compras</header>
@@ -85,37 +85,20 @@
             
             <button type="button" class="btn btn-light btn-sm" onclick="hideEditForm()">Cancelar</button>
         </form>
-        
+        <!-- seção para bloqueio da tela principal quando aberta tela de edição -->
+        <section id="z-indexed" style="width: 100vw;height: 100vh;display:none;z-index: 2;position: absolute;"></section>
         <!-- Estoque escondido -->
         <section style="display: none;" class=" p-2 bg-secondary text-white rounded" id="stockForm">    
             <header class="text-center h1 bg-info rounded">Estoque(Em desenvolvimento)</header>   
             <table class=" table table-sm table-bordered table-striped table-dark text-white" id="stockTable">
-                <!-- <thead >
-                    <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Quantidade</th>
-                    <th scope="col">Item</th>
-                    <th scope="col">Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>3 Kg</td>
-                        <td>Açúcar</td>
-                        <td style="width: fit-content;">
-                            <button class="btn btn-info btn-sm" onclick="">Editar</button>
-                            <button class="btn btn-danger btn-sm" onclick="">Deletar</button>
-                        </td>
-                    </tr>
-                </tbody> -->
+                
             </table> 
             <div class="px-1 d-flex justify-content-between" >
                 <button type="button" onclick="hideStock()" class="btn btn-outline-light">Retornar à lista</button>
                 <button type="button" onclick="clearStock()" class="btn btn-outline-danger font-weight-bold">Limpar estoque</button>
             </div>
             
-            <div class="m-0 footer">
+            <div class="m-0 footer" >
                 &copy; 2023 - Created by Leonardo Cruz
             </div>
         </section>
@@ -146,7 +129,7 @@
             
             <button type="button" class="btn btn-light btn-sm" onclick="hideStockEditor()">Cancelar</button>
         </form>
-        <footer class="m-0">
+        <footer class="m-0" id="footerDiv">
         &copy; 2023 - Created by Leonardo Cruz
         </footer>
     </main>
